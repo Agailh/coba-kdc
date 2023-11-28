@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,14 +15,28 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+
     <title>Performance</title>
 </head>
 
 <body>
 
-
     <header>
-
         <!-- Sidebar -->
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
             <!-- admin -->
@@ -30,7 +44,6 @@
                 <div class="row">
                     <div class="col-md-4">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle px-2 py-2" height="110" alt="Avatar" loading="lazy">
-
                     </div>
                     <div class="col-md-6 py-5 px-5">
                         <h4>Admin</h4>
@@ -50,13 +63,9 @@
                     <a href="#" class="list-group-item list-group-item-action py-3 ripple" aria-current="true">
                         <i class="fas fa-truck fa-fw me-1"></i><span>Manajemen Aset</span>
                     </a>
-
-
                     <a href="#" class="list-group-item list-group-item-action py-3 ripple active">
                         <i class="fas fa-book fa-fw me-1"></i><span>Performance Monitoring</span>
                     </a>
-
-
                 </div>
             </div>
         </nav>
@@ -66,58 +75,38 @@
         <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
             <!-- Container wrapper -->
             <div class="container-fluid">
-
                 <!-- Toggle button -->
                 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars "></i>
                 </button>
-
                 <!-- Brand -->
                 <a class="navbar-brand" href="#">
                     <img src="/img/logo.png" height="25" alt="MDB Logo" loading="lazy" />
                 </a>
-
                 <!-- title -->
                 <h3 class="px-5">Cascading Planning and Strategy</h3>
-
                 <!-- Right links -->
                 <ul class="navbar-nav ms-auto d-flex flex-row">
-                    <!-- Notification dropdown -->
-
                     <a class="nav-link me-3 me-lg-0" href="#">
                         <i class="fas fa-commenting" style="color: white"></i>
                         <span class="badge rounded-pill badge-notification bg-danger">2</span>
                     </a>
-                    <!-- Icon -->
-
                     <a class="nav-link me-3 me-lg-0" href="#">
                         <i class="fas fa-bell " style="color: white"></i>
                         <span class="badge rounded-pill badge-notification bg-danger">4</span>
                     </a>
-
-
-
-
-
-                    <!-- Avatar -->
-
                     <a class="nav-link  d-flex align-items-center" href="#">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle" height="22" alt="Avatar" loading="lazy" />
                     </a>
-
-
                     <a class="nav-link me-3 me-lg-0" href="#">
                         <i class="fas fa-sign-out " style="color: white"></i>
                     </a>
-
-
                 </ul>
             </div>
             <!-- Container wrapper -->
         </nav>
         <!-- Navbar -->
     </header>
-    <!--Main Navigation-->
 
     <!--Main layout-->
     <main style="margin-top: 58px;">
