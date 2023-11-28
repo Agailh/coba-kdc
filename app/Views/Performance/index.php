@@ -17,6 +17,8 @@
                     <button class="btn btn-success" type="submit" name="submit" id="button-addon2">Tampilkan </button>
                 </div>
             </form>
+            <!-- Show All Data Button -->
+            <a href="<?= base_url('/performance/index'); ?>" class="btn btn-secondary">Tampilkan Semua Data</a>
 
             <table class="table table-striped">
                 <thead>

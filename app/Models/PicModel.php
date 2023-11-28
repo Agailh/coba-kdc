@@ -22,12 +22,12 @@ class PicModel extends Model
         return $query->getResult();
     }
 
-    // public function search($keyword)
-    // {
-    //     $builder = $this->db->table('tbl_pic_kpi');
-    //     $builder->join('tbl_kpi', 'tbl_kpi.kode_pic = tbl_pic_kpi.kode_pic');
-    //     $builder->like('tbl_pic_kpi.pic', $keyword);
-    //     $query = $builder->get();
-    //     return $query->getResult();
-    // }
+    public function search($keyword)
+    {
+        $builder = $this->db->table('tbl_pic_kpi');
+        $builder->join('tbl_kpi', 'tbl_kpi.kode_pic = tbl_pic_kpi.kode_pic');
+        $builder->like('tbl_pic_kpi.pic', $keyword);
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }
