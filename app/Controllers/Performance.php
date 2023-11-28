@@ -26,13 +26,15 @@ class Performance extends BaseController
         // dd($kdcModel);
         // $picModel = $this->picModel->findAll();
         // $kdcModel = $this->kdcModel->findAll();
-
         $keyword = $this->request->getVar('keyword');
-        if ($keyword) {
-            $datakdc = $this->picModel->search($keyword);
-        } else {
-            $datakdc = $this->picModel;
-        }
+
+        // Search in picModel
+        // if ($keyword) {
+        //     $data['pic'] = $this->picModel->search($keyword);
+        // } else {
+        //     $data['pic'] = $this->picModel->getAll();
+        // }
+
         // $data = [
 
         //     // 'pic' => $picModel,

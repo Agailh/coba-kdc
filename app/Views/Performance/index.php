@@ -48,7 +48,7 @@
                         endif;
                         ?>
                         <tr>
-                            <th scope="row"><?= $p->deskripsi_kpi; ?></th>
+                            <th scope="row" style="font-weight: 500;"><?= $p->deskripsi_kpi; ?></th>
                             <td><?= $p->weight; ?></td>
                             <td><?= $p->uom; ?></td>
                             <td><?= $p->target; ?></td>
