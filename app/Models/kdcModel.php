@@ -12,14 +12,12 @@ class kdcModel extends Model
     // protected $allowedFields = ['weight', 'uom', 'target', 'freq', 'criteria', 'ach', 'score', 'ws'];
     protected $useTimeStaps = true;
 
-
-    // function getAll()
-    // {
-    //     $builder = $this->db->table('tbl_kpi');
-    //     $builder->join('tbl_pic_kpi', 'tbl_pic_kpi.kode_pic = tbl_kpi.kode_pic');
-    //     $query = $builder->get();
-    //     return $query->getResult();
-    // }
-
-
+    public function getAllByKodePic($kode_pic)
+    {
+        $builder = $this->db->table('tbl_kpi');
+        $builder->join('tbl_pic_kpi', 'tbl_pic_kpi.kode_pic = tbl_kpi.kode_pic');
+        $builder->where('tbl_kpi.kode_pic', $kode_pic);
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

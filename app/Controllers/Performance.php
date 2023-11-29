@@ -31,6 +31,18 @@ class Performance extends BaseController
 
         return view('/Performance/index', $data);
     }
+
+    public  function detail($kode_pic)
+    {
+        // Get all data for the specific kode_pic
+
+
+        $kdcData = [
+            'kdcData' => $this->kdcModel->getAllByKodePic($kode_pic)
+
+        ];
+        return view('performance/detail', $kdcData);
+    }
 }
 
 
