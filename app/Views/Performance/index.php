@@ -13,7 +13,7 @@
                 </div>
             </form>
             <!-- Show All Data Button -->
-            <a href="<?= base_url('/performance'); ?>" class="btn btn-secondary">Tampilkan Semua Data</a>
+            <a href="<?= base_url('/performance'); ?>" class="btn btn-secondary my-3">Tampilkan Semua Data</a>
 
             <div class="table-responsive">
                 <table class="table table-striped">

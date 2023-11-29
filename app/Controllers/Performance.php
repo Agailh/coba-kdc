@@ -43,6 +43,34 @@ class Performance extends BaseController
         ];
         return view('performance/detail', $kdcData);
     }
+
+    public function edit($kode_pic)
+    {
+
+        $kdcData = [
+            'kdcData' => $this->kdcModel->getAllByKodePic($kode_pic)
+
+        ];
+        return view('performance/edit', $kdcData);
+    }
+
+    public function update($kode_pic)
+    {
+        $this->kdcModel->save([
+            'no_kpi' => $kode_pic,
+            'weight' => $this->request->getVar('weight'),
+            'uom' => $this->request->getVar('uom'),
+            'target' => $this->request->getVar('target'),
+            'freq' => $this->request->getVar('freq'),
+            'criteria' => $this->request->getVar('criteria'),
+            'score' => $this->request->getVar('score'),
+            'ws' => $this->request->getVar('ws'),
+
+        ]);
+
+        session()->setFlashdata('pesan', 'Data berhasil di update');
+        return redirect()->to('/performance');
+    }
 }
 
 
