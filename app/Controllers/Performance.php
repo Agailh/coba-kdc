@@ -63,6 +63,7 @@ class Performance extends BaseController
             'target' => $this->request->getVar('target'),
             'freq' => $this->request->getVar('freq'),
             'criteria' => $this->request->getVar('criteria'),
+            'ach' => $this->request->getVar('ach'),
             'score' => $this->request->getVar('score'),
             'ws' => $this->request->getVar('ws'),
 
