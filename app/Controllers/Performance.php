@@ -98,7 +98,7 @@ class Performance extends BaseController
     }
     public function delete($kode_pic, $no_kpi)
     {
-        // Check if the row can be deleted based on your criteria
+
         $row = $this->kdcModel->find($no_kpi);
 
         if ($row && $row->updated) {
@@ -111,34 +111,3 @@ class Performance extends BaseController
         return redirect()->to('/performance/detail/' . $kode_pic);
     }
 }
-
-
-
-// public function index()
-// {
-
-//     // $kdcModel = new kdcModel();
-//     // $kdcModel->findAll();
-//     // dd($kdcModel);
-//     // $picModel = $this->picModel->findAll();
-//     // $kdcModel = $this->kdcModel->findAll();
-//     $keyword = $this->request->getVar('keyword');
-
-//     // Search in picModel
-//     // if ($keyword) {
-//     //     $data['pic'] = $this->picModel->search($keyword);
-//     // } else {
-//     //     $data['pic'] = $this->picModel->getAll();
-//     // }
-
-//     // $data = [
-
-//     //     // 'pic' => $picModel,
-//     //     // 'kdc' => $kdcModel,
-
-//     // ];
-//     // $data['kdc'] = $this->kdcModel->getAll();
-//     $data['pic'] = $this->picModel->getAll();
-
-//     return view('/Performance/index', $data);
-// }
