@@ -54,20 +54,44 @@ class Performance extends BaseController
         return view('performance/edit', $kdcData);
     }
 
+
+
+
+
     public function update($kode_pic)
     {
-        $this->kdcModel->save([
-            'no_kpi' => $kode_pic,
-            'weight' => $this->request->getVar('weight'),
-            'uom' => $this->request->getVar('uom'),
-            'target' => $this->request->getVar('target'),
-            'freq' => $this->request->getVar('freq'),
-            'criteria' => $this->request->getVar('criteria'),
-            'ach' => $this->request->getVar('ach'),
-            'score' => $this->request->getVar('score'),
-            'ws' => $this->request->getVar('ws'),
+        $updateData = [];
 
-        ]);
+
+        $weights = $this->request->getVar('weight');
+        $uoms = $this->request->getVar('uom');
+        $target = $this->request->getVar('target');
+        $freq = $this->request->getVar('freq');
+        $criteria = $this->request->getVar('criteria');
+        $ach = $this->request->getVar('ach');
+        $score = $this->request->getVar('score');
+        $ws = $this->request->getVar('ws');
+
+
+
+        // Loop through the arrays and build the update data
+        foreach ($weights as $no_kpi => $weight) {
+            $updateData[] = [
+                'no_kpi' => $no_kpi,
+                'weight' => $weight,
+                'uom' => $uoms[$no_kpi],
+                'target' => $target[$no_kpi],
+                'freq' => $freq[$no_kpi],
+                'criteria' => $criteria[$no_kpi],
+                'ach' => $ach[$no_kpi],
+                'score' => $score[$no_kpi],
+                'ws' => $ws[$no_kpi],
+
+            ];
+        }
+
+        // Perform the update
+        $this->kdcModel->updateBatch($updateData, 'no_kpi');
 
         session()->setFlashdata('pesan', 'Data berhasil di update');
         return redirect()->to('/performance');
