@@ -9,7 +9,7 @@
             <a href="<?= base_url('/performance'); ?>" class="btn btn-secondary">Tampilkan Semua Data</a>
 
             <div class="table-responsive mt-3">
-                <form action="/performance/update/<?= $kdcData[0]->kode_pic ?>" method="post">
+                <form action="/performance/update/<?= $kdcData[0]->kode_pic ?>" method="post" id="updateForm">
                     <?= csrf_field(); ?>
                     <table class="table table-striped">
                         <thead>
@@ -27,11 +27,11 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <?php
-                            $currentPic = null; // Variable to keep track of the current pic
+                            $currentPic = null; // current pic variable
 
                             foreach ($kdcData as $p) :
                                 if ($currentPic !== $p->pic) :
-                                    // Display pic only once at the top
+                                    // Display pic name on top
                             ?>
                                     <tr>
                                         <th class="table-primary" scope="row" colspan="12"><?= $p->pic; ?></th>
@@ -40,7 +40,7 @@
                                     $currentPic = $p->pic; // Update the current pic
                                 endif;
                                 ?>
-                                <!-- Input fields for each row of data -->
+
                                 <tr>
                                     <th scope="row" style="font-weight: 500;"><?= $p->deskripsi_kpi; ?></th>
                                     <td><input type="text" class="form-control" name="weight[<?= $p->no_kpi; ?>]" value="<?= $p->weight; ?>"></td>
@@ -57,14 +57,27 @@
                         </tbody>
                     </table>
 
-                    <!-- Submit Button -->
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-warning">Submit</button>
+                    <!-- Submit and Clear All Buttons -->
+                    <div class="d-flex flex-row-reverse mt-3 ">
+                        <button type="submit" class="btn btn-warning me-3">Submit</button>
+                        <button type="button" class="btn btn-danger me-3" onclick="clearAllFields()">Clear All</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function clearAllFields() {
+        // Get all input fields in the form
+        var inputFields = document.querySelectorAll('#updateForm input[type="text"]');
+
+        // Set the value of each input field to null
+        inputFields.forEach(function(input) {
+            input.value = null;
+        });
+    }
+</script>
 
 <?= $this->endSection('content'); ?>

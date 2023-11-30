@@ -13,7 +13,7 @@
                 </div>
             </form> -->
             <!-- Show All Data Button -->
-            <a href="<?= base_url('/performance'); ?>" class="btn btn-secondary">Tampilkan Semua Data</a>
+            <a href="<?= base_url('/performance'); ?>" class="btn btn-secondary mb-3">Tampilkan Semua Data</a>
 
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -32,11 +32,11 @@
                     </thead>
                     <tbody class="table-group-divider">
                         <?php
-                        $currentPic = null; // Variable to keep track of the current pic
+                        $currentPic = null; // current pic variable 
 
                         foreach ($kdcData as $p) :
                             if ($currentPic !== $p->pic) :
-                                // Display pic only once at the top
+                                // display pic name on the top
                         ?>
                                 <tr>
                                     <th class="table-primary" scope="row" colspan="12"><?= $p->pic; ?></th>
@@ -58,7 +58,7 @@
                                 <td><?= $p->deskripsi; ?></td>
                             </tr>
                         <?php endforeach; ?>
-                        <!-- Edit Button (at the bottom of the table) -->
+                        <!-- edit button -->
                         <tr>
                             <td colspan="12" class="text-end">
                                 <a href="/performance/edit/<?= $p->kode_pic; ?>" class="btn btn-warning">Edit</a>

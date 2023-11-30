@@ -96,6 +96,20 @@ class Performance extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil di update');
         return redirect()->to('/performance');
     }
+    public function delete($kode_pic, $no_kpi)
+    {
+        // Check if the row can be deleted based on your criteria
+        $row = $this->kdcModel->find($no_kpi);
+
+        if ($row && $row->updated) {
+            $this->kdcModel->delete($no_kpi);
+            session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        } else {
+            session()->setFlashdata('pesan', 'Data tidak dapat dihapus');
+        }
+
+        return redirect()->to('/performance/detail/' . $kode_pic);
+    }
 }
 
 
