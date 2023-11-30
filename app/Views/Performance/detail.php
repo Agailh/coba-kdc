@@ -5,14 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <!-- Search Bar -->
-            <!-- <form action="" method="post">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Group unit" aria-label="Group unit" aria-describedby="button-addon2" name="keyword">
-                    <button class="btn btn-success" type="submit" name="submit" id="button-addon2">Tampilkan</button>
-                </div>
-            </form> -->
-            <!-- Show All Data Button -->
+
             <a href="<?= base_url('/performance'); ?>" class="btn btn-secondary mb-3">Tampilkan Semua Data</a>
 
             <div class="table-responsive">
