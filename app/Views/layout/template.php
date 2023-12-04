@@ -119,7 +119,7 @@
     <!-- footer -->
     <footer class="bg-white text-black text-center pl-2 py-2">
         <div class="container">
-            <h5 class="mb-0 ps-5 ">PT.Kaltim Coal & PT.JIM &copy; 2023 </h5>
+            <h5 class="mb-0 ps-5 ">PT.Kaltim Coal & PT.JIM &copy; <?= date('Y'); ?> </h5>
         </div>
     </footer>
 

@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+class User extends BaseController
 {
     public function index()
     {
-        echo ('wut');
+        return view('user/index');
     }
 }
