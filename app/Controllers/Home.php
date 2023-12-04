@@ -6,12 +6,11 @@ class Home extends BaseController
 {
     public function index()
     {
-        //return view('welcome_message');
-        echo "hellow";
+        return view('auth/login');
     }
 
-    public function Coba()
+    public function register()
     {
-        echo "helloww2";
+        return view('auth/register');
     }
 }

@@ -4,15 +4,20 @@ namespace App\Controllers;
 
 use App\Models\kdcModel;
 use App\Models\PicModel;
+use CodeIgniter\Validation\StrictRules\Rules;
 
 class Performance extends BaseController
 {
+
     protected $picModel;
     protected $kdcModel;
+    protected $validation;
     public function __construct()
     {
         $this->picModel = new PicModel();
         $this->kdcModel = new kdcModel();
+
+        $this->validation = \Config\Services::validation();
     }
 
 
@@ -38,7 +43,8 @@ class Performance extends BaseController
 
 
         $kdcData = [
-            'kdcData' => $this->kdcModel->getAllByKodePic($kode_pic)
+            'kdcData' => $this->kdcModel->getAllByKodePic($kode_pic),
+            'validation' => $this->validation,
 
         ];
         return view('performance/detail', $kdcData);
@@ -48,7 +54,8 @@ class Performance extends BaseController
     {
 
         $kdcData = [
-            'kdcData' => $this->kdcModel->getAllByKodePic($kode_pic)
+            'kdcData' => $this->kdcModel->getAllByKodePic($kode_pic),
+            'validation' => $this->validation,
 
         ];
         return view('performance/edit', $kdcData);
@@ -62,7 +69,6 @@ class Performance extends BaseController
     {
         $updateData = [];
 
-
         $weights = $this->request->getVar('weight');
         $uoms = $this->request->getVar('uom');
         $target = $this->request->getVar('target');
@@ -71,8 +77,6 @@ class Performance extends BaseController
         $ach = $this->request->getVar('ach');
         $score = $this->request->getVar('score');
         $ws = $this->request->getVar('ws');
-
-
 
         // Loop through the arrays and build the update data
         foreach ($weights as $no_kpi => $weight) {
@@ -86,16 +90,33 @@ class Performance extends BaseController
                 'ach' => $ach[$no_kpi],
                 'score' => $score[$no_kpi],
                 'ws' => $ws[$no_kpi],
-
             ];
         }
 
-        // Perform the update
-        $this->kdcModel->updateBatch($updateData, 'no_kpi');
+        $validate = $this->validate(
+            [
+                'weight' => [
+                    'rules' => 'numeric',
+                    'errors' => ['Float type of data',],
 
-        session()->setFlashdata('pesan', 'Data berhasil di update');
-        return redirect()->to('/performance');
+                ],
+            ],
+
+        );
+
+        // Validate the input
+        if ($this->validator->hasError('weight')) {
+            // Pass the validation instance and the update data to the view
+            return redirect()->to('/performance/edit/' . $kode_pic);
+        } else {
+            // Perform the update
+            $this->kdcModel->updateBatch($updateData, 'no_kpi');
+
+            session()->setFlashdata('pesan', 'Data berhasil diupdate');
+            return redirect()->to('/performance/detail/' . $kode_pic);
+        }
     }
+
     public function delete($kode_pic, $no_kpi)
     {
 
