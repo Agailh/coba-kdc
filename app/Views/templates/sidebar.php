@@ -46,7 +46,7 @@
          <!-- Nav Item - Admin -->
          <li class="nav-item">
              <a class="nav-link" href="<?= base_url('Admin'); ?>">
-                 <i class="fas fa-fw fa-user"></i>
+                 <i class="fas fa-fw fa-users"></i>
                  <span>List</span></a>
          </li>
 
@@ -71,6 +71,11 @@
          <a class="nav-link" href="<?= base_url('user'); ?>">
              <i class="fas fa-fw fa-user"></i>
              <span>My Profile</span></a>
+     </li>
+     <li class="nav-item">
+         <a class="nav-link" href="<?= base_url('User/Edit'); ?>">
+             <i class="fas fa-fw fa-address-book"></i>
+             <span>Edit Profile</span></a>
      </li>
 
      <!-- Divider -->
