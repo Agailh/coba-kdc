@@ -6,6 +6,12 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <?php if (session()->getFlashdata('pesan') !== NULL) : ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?php echo session()->getFlashdata('pesan'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+            <?php endif; ?>
 
             <a href="<?= base_url('/performance'); ?>" class="btn btn-secondary mb-3">Tampilkan Semua Data</a>
 
@@ -39,7 +45,7 @@
                                 $currentPic = $p->pic; // Update the current pic
                             endif;
                             ?>
-                            <tr>
+                            <tr class="text-center">
                                 <th scope="row" style="font-weight: 500;"><?= $p->deskripsi_kpi; ?></th>
                                 <td><?= $p->weight; ?></td>
                                 <td><?= $p->uom; ?></td>

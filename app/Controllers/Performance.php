@@ -93,26 +93,22 @@ class Performance extends BaseController
             ];
         }
 
-        $validate = $this->validate(
-            [
-                'weight' => [
-                    'rules' => 'numeric',
-                    'errors' => ['Float type of data',],
-
-                ],
-            ],
-
-        );
-
         // Validate the input
-        if ($this->validator->hasError('weight')) {
+        $validationRules = [
+            'weight.*' => 'numeric',
+            'score.*' => 'numeric',
+            'ws.*' => 'numeric',
+        ];
+
+        if (!$this->validate($validationRules)) {
             // Pass the validation instance and the update data to the view
+            session()->setFlashdata('pesan', 'Weight, Score dan WS harus berupa angka!');
             return redirect()->to('/performance/edit/' . $kode_pic);
         } else {
             // Perform the update
             $this->kdcModel->updateBatch($updateData, 'no_kpi');
 
-            session()->setFlashdata('pesan', 'Data berhasil diupdate');
+            session()->setFlashdata('pesan', 'Data berhasil di update');
             return redirect()->to('/performance/detail/' . $kode_pic);
         }
     }

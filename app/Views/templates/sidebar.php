@@ -10,16 +10,20 @@
      </a>
 
      <!-- Divider -->
-     <hr class="sidebar-divider my-0">
 
-     <div class="w-50 pt-2 ml-2 mb-5 d-flex flex-row">
-         <img class="img-profile rounded-circle" src="<?= base_url('img/' . user()->user_image); ?>">
-         <div class="mt-5 mx-2 ">
+     <!-- User Status section -->
+     <div class="nav-item w-50 pt-2 ml-4 mb-5 d-flex flex-column align-items-center justify-content-center">
+         <img class="img-profile rounded-circle img-fluid" src="<?= base_url('img/' . user()->user_image); ?>">
 
-             <span class=" text-light "><?= user()->username; ?></span>
+         <div class="mt-2 mx-2 text-center mt-auto text-md-start">
+             <span class="text-light"><?= user()->username; ?></span>
              <span class="badge badge-success">online</span>
          </div>
      </div>
+     <!-- end of user status section -->
+
+
+
 
 
 

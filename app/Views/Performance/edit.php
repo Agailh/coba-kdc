@@ -5,6 +5,14 @@
 <div class="container">
     <div class="row">
         <div class="col">
+
+            <?php if (session()->getFlashdata('pesan') !== NULL) : ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo session()->getFlashdata('pesan'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+            <?php endif; ?>
+
             <!-- Show All Data Button -->
             <a href="<?= base_url('/performance'); ?>" class="btn btn-secondary">Tampilkan Semua Data</a>
 
@@ -75,8 +83,8 @@
 
                     <!-- Submit and Clear All Buttons -->
                     <div class="d-flex flex-row-reverse mt-3 ">
-                        <button type="submit" class="btn btn-warning me-3">Submit</button>
-                        <button type="button" class="btn btn-danger me-3" onclick="clearAllFields()">Clear All</button>
+                        <button type="submit" class="btn btn-warning mx-2 me-3">Submit</button>
+                        <button type="button" class="btn btn-danger mx-2 me-3" onclick="clearAllFields()">Clear All</button>
                     </div>
                 </form>
             </div>
@@ -86,14 +94,45 @@
 
 <script>
     function clearAllFields() {
-        // Get all input fields in the form
-        var inputFields = document.querySelectorAll('#updateForm input[type="text"]');
+        // Get specific input fields in the form
+        var weightFields = document.querySelectorAll('#updateForm input[name^="weight"]');
+        var uomFields = document.querySelectorAll('#updateForm input[name^="uom"]');
+        var targetFields = document.querySelectorAll('#updateForm input[name^="target"]');
+        var freqFields = document.querySelectorAll('#updateForm input[name^="freq"]');
+        var criteriaFields = document.querySelectorAll('#updateForm input[name^="criteria"]');
+        var achFields = document.querySelectorAll('#updateForm input[name^="ach"]');
+        var scoreFields = document.querySelectorAll('#updateForm input[name^="score"]');
+        var wsFields = document.querySelectorAll('#updateForm input[name^="ws"]');
 
-        // Set the value of each input field to null
-        inputFields.forEach(function(input) {
+        // Set the value of each input field to 0
+        weightFields.forEach(function(input) {
+            input.value = 0;
+        });
+        uomFields.forEach(function(input) {
             input.value = null;
         });
+        targetFields.forEach(function(input) {
+            input.value = null;
+        });
+        freqFields.forEach(function(input) {
+            input.value = null;
+        });
+        criteriaFields.forEach(function(input) {
+            input.value = null;
+        });
+        achFields.forEach(function(input) {
+            input.value = null;
+        });
+
+        scoreFields.forEach(function(input) {
+            input.value = 0;
+        });
+
+        wsFields.forEach(function(input) {
+            input.value = 0;
+        });
     }
+
 
     document.addEventListener('DOMContentLoaded', function() {
         var validationErrors = <?= json_encode($validation->getErrors()); ?>;
