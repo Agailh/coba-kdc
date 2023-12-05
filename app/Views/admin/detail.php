@@ -7,7 +7,7 @@
     <!-- Page Heading -->
 
     <h1 class="h3 mb-4 text-gray-800">User Detail</h1>
-    <?php d($user); ?>
+
 
 
     <div class="row">

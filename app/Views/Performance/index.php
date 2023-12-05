@@ -1,6 +1,6 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('templates/index'); ?>
 
-<?= $this->section('content'); ?>
+<?= $this->section('page-content'); ?>
 
 <div class="container">
     <div class="row">
@@ -73,4 +73,4 @@
 
 
 
-<?= $this->endSection('content'); ?>
+<?= $this->endSection('page-content'); ?>

@@ -12,11 +12,17 @@
      <!-- Divider -->
      <hr class="sidebar-divider my-0">
 
-     <!-- Nav Item - Dashboard -->
-     <!-- Divider -->
-     <hr class="sidebar-divider my-0">
+     <div class="w-50 pt-2 ml-2 mb-5 d-flex flex-row">
+         <img class="img-profile rounded-circle" src="<?= base_url('img/' . user()->user_image); ?>">
+         <div class="mt-5 mx-2 ">
 
-     <!-- Nav Item - Dashboard -->
+             <span class=" text-light "><?= user()->username; ?></span>
+             <span class="badge badge-success">online</span>
+         </div>
+     </div>
+
+
+
 
 
      <!-- Divider -->
@@ -63,11 +69,11 @@
              <span>My Profile</span></a>
      </li>
 
-     <!-- Nav Item - Tables -->
-     <li class="nav-item">
-         <a class="nav-link" href="/performance">
-             <i class="fas fa-fw fa-user-edit"></i>
-             <span>Edit User</span></a>
+     <!-- Divider -->
+     <hr class="sidebar-divider d-none d-md-block">
+     <div class="sidebar-heading">
+         Menu
+     </div>
      </li>
      <!-- Nav Item - Tables -->
      <li class="nav-item">
@@ -78,6 +84,8 @@
 
      <!-- Divider -->
      <hr class="sidebar-divider d-none d-md-block">
+
+
 
      <!-- Nav Item - logout -->
      <li class="nav-item">
