@@ -108,7 +108,7 @@ class Performance extends BaseController
             // Perform the update
             $this->kdcModel->updateBatch($updateData, 'no_kpi');
 
-            session()->setFlashdata('pesan', 'Data berhasil di update');
+            session()->setFlashdata('pesan', 'Data berhasil di update !');
             return redirect()->to('/performance/detail/' . $kode_pic);
         }
     }
