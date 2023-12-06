@@ -43,7 +43,7 @@
                                     <th class="table-primary" scope="row" colspan="9"><?= $p->pic; ?></th>
                                     <td class="table-primary">
                                         <!-- detail Button -->
-                                        <a href="/performance/<?= $p->kode_pic; ?>" class="btn btn-warning ">Detail</a>
+                                        <a href="/performance/<?= $p->kode_pic; ?>" class="btn btn-info ">Detail</a>
                                     </td>
                                 </tr>
                             <?php
