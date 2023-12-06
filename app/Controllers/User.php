@@ -33,7 +33,7 @@ class User extends BaseController
             $this->builder->where('id', user()->id);
             $this->builder->update($data);
 
-
+            session()->setFlashdata('pesan', 'Profile berhasil di update !');
             return redirect()->to(base_url('user'))->with('success', 'Full name updated successfully');
         } else {
 

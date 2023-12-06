@@ -6,7 +6,12 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">My Profile</h1>
-
+    <?php if (session()->getFlashdata('pesan') !== NULL) : ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo session()->getFlashdata('pesan'); ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+    <?php endif; ?>
 
     <div class="row">
         <div class="col-lg-8">
