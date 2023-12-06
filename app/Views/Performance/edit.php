@@ -17,17 +17,7 @@
             <a href="<?= base_url('/performance'); ?>" class="btn btn-secondary">Tampilkan Semua Data</a>
 
             <div class="table-responsive mt-3">
-                <?php $validation = \Config\Services::validation() ?>
-                <?php if (count($validation->getErrors()) > 0) : ?>
-                    <div class="alert alert-danger" role="alert">
-                        <strong>Error!</strong> Please fix the following issues:
-                        <ul>
-                            <?php foreach ($validation->getErrors() as $error) : ?>
-                                <li><?= $error ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
+
 
                 <form action="/performance/update/<?= $kdcData[0]->kode_pic ?>" method="post" id="updateForm">
                     <?= csrf_field(); ?>
@@ -63,15 +53,15 @@
 
                                 <tr>
                                     <th scope="row" style="font-weight: 500;"><?= $p->deskripsi_kpi; ?></th>
-                                    <td><input type="text" class="form-control <?= ($validation->hasError('weight')) ? 'is-valid' : ''; ?>" name="weight[<?= $p->no_kpi; ?>]" value="<?= $p->weight; ?>">
+                                    <td><input type="text" class="form-control <?= (session()->getFlashdata('pesan')) ? 'is-invalid' : ''; ?>" name="weight[<?= $p->no_kpi; ?>]" value="<?= $p->weight; ?>">
                                     </td>
                                     <td><input type="text" class="form-control" name="uom[<?= $p->no_kpi; ?>]" value="<?= $p->uom; ?>"></td>
                                     <td><input type="text" class="form-control" name="target[<?= $p->no_kpi; ?>]" value="<?= $p->target; ?>"></td>
                                     <td><input type="text" class="form-control" name="freq[<?= $p->no_kpi; ?>]" value="<?= $p->freq; ?>"></td>
                                     <td><input type="text" class="form-control" name="criteria[<?= $p->no_kpi; ?>]" value="<?= $p->criteria; ?>"></td>
                                     <td><input type="text" class="form-control" name="ach[<?= $p->no_kpi; ?>]" value="<?= $p->ach; ?>"></td>
-                                    <td><input type="text" class="form-control" name="score[<?= $p->no_kpi; ?>]" value="<?= $p->score; ?>"></td>
-                                    <td><input type="text" class="form-control" name="ws[<?= $p->no_kpi; ?>]" value="<?= $p->ws; ?>"></td>
+                                    <td><input type="text" class="form-control <?= (session()->getFlashdata('pesan')) ? 'is-invalid' : ''; ?>" name="score[<?= $p->no_kpi; ?>]" value="<?= $p->score; ?>"></td>
+                                    <td><input type="text" class="form-control <?= (session()->getFlashdata('pesan')) ? 'is-invalid' : ''; ?>" name="ws[<?= $p->no_kpi; ?>]" value="<?= $p->ws; ?>"></td>
 
                                 </tr>
 
