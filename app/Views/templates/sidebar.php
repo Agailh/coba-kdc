@@ -17,6 +17,7 @@
 
          <div class="mt-2 mx-2 text-center mt-auto text-md-start">
              <span class="text-light"><?= user()->username; ?></span>
+             <br>
              <span class="badge badge-success">online</span>
          </div>
      </div>

@@ -1,3 +1,4 @@
+<!-- User/edit.php (View) -->
 <?= $this->extend('templates/index'); ?>
 
 <?= $this->section('page-content'); ?>
@@ -7,34 +8,24 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Edit My profile</h1>
 
+    <!-- Display validation errors if any -->
+    <?php if (isset($validation)) : ?>
+        <?= \Config\Services::validation()->listErrors(); ?>
+    <?php endif; ?>
 
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="<?= base_url('/img/' . user()->user_image); ?>" class="img-fluid rounded-start w-75 mx-4 my-4" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <h4>
-                                        <?= user()->username; ?>
-                                    </h4>
-                                </li>
-                                <?php if (user()->fullname) : ?>
-                                    <li class="list-group-item"><?= user()->fullname; ?></li>
-                                <?php endif ?>
-                                <li class="list-group-item"><?= user()->email; ?></li>
+    <form action="<?= base_url('user/edit'); ?>" method="post">
+        <?= csrf_field(); ?>
 
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="mb-3">
+            <label for="fullname" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" value="<?= user()->username; ?>">
         </div>
-    </div>
+        <div class="mb-3">
+            <label for="fullname" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullname" name="fullname" value="<?= user()->fullname; ?>">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
 
 </div>
 
