@@ -14,8 +14,8 @@
         <div class="col-lg-8">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="<?= base_url('/img/' . $user->user_image); ?>" class="img-fluid rounded-start" alt="...">
+                    <div class="col-md-4 pt-5">
+                        <img src="<?= base_url('/uploads/profile_pics/' . $user->user_image) ?>" class="img-fluid rounded-start ml-4" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">

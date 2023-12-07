@@ -93,6 +93,22 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url() ?>/js/sb-admin-2.min.js"></script>
+    <script>
+        function previewImg() {
+            const fileInput = document.getElementById('user_image');
+            const imgPreview = document.getElementById('img-preview');
+            const customFileLabel = document.querySelector('.custom-file-label');
+
+            customFileLabel.textContent = fileInput.files[0].name;
+
+            const fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+
+            fileReader.readAsDataURL(fileInput.files[0]);
+        }
+    </script>
 </body>
 
 </html>

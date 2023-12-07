@@ -5,15 +5,16 @@
      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
 
          <div class="sidebar-brand-text mx-3">
-             <img src="/img/logo.png" height="25" alt="MDB Logo" loading="lazy" />
+             <img src="/img/logo.png" height="25" alt="Logo" loading="lazy" />
          </div>
      </a>
+
 
      <!-- Divider -->
 
      <!-- User Status section -->
      <div class="nav-item w-50 pt-2 ml-4 mb-5 d-flex flex-column align-items-center justify-content-center">
-         <img class="img-profile rounded-circle img-fluid" src="<?= base_url('img/' . user()->user_image); ?>">
+         <img class="img-profile rounded-circle img-fluid" src="<?= base_url('/uploads/profile_pics/' . user()->user_image); ?>">
 
          <div class="mt-2 mx-2 text-center mt-auto text-md-start">
              <span class="text-light"><?= user()->username; ?></span>
