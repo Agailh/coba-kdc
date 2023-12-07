@@ -21,12 +21,12 @@ class kdcModel extends Model
         return $query->getResult();
     }
 
-    public function getPrimaryKeysByKodePic($kode_pic)
-    {
-        $builder = $this->db->table('tbl_kpi');
-        $builder->select('no_kpi');
-        $builder->where('kode_pic', $kode_pic);
-        $query = $builder->get();
-        return array_column($query->getResultArray(), 'no_kpi');
-    }
+    // public function getPrimaryKeysByKodePic($kode_pic)
+    // {
+    //     $builder = $this->db->table('tbl_kpi');
+    //     $builder->select('no_kpi');
+    //     $builder->where('kode_pic', $kode_pic);
+    //     $query = $builder->get();
+    //     return array_column($query->getResultArray(), 'no_kpi');
+    // }
 }

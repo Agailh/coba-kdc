@@ -50,6 +50,7 @@
                                 $currentPic = $p->pic; // Update the current pic
                             endif;
                             ?>
+
                             <tr class="text-center">
                                 <th scope="row" style="font-weight: 500;"><?= $p->deskripsi_kpi; ?></th>
                                 <td><?= $p->weight; ?></td>
