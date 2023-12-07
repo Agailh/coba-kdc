@@ -20,8 +20,16 @@ class User extends BaseController
         $rules = [
             'fullname' => 'required|max_length[255]',
             'username' => 'required|max_length[255]',
-            'user_image' => 'uploaded[user_image]|max_size[user_image,1024]|is_image[user_image]|mime_in[user_image,image/jpg,image/jpeg,image/png,image/svg+xml]',
+            'user_image' => 'max_size[user_image,1024]|is_image[user_image]|mime_in[user_image,image/jpg,image/jpeg,image/png,image/svg+xml]',
         ];
+
+        // Check if a file is uploaded before applying validation rules
+        if ($file = $this->request->getFile('user_image')) {
+            // Remove the 'required' rule for user_image if no file is uploaded
+            if (!$file->isValid()) {
+                unset($rules['user_image']);
+            }
+        }
 
         if ($this->validate($rules)) {
             $data = [
@@ -30,10 +38,13 @@ class User extends BaseController
             ];
 
             // Check if a new profile picture is uploaded
-            if ($file = $this->request->getFile('user_image')) {
-                $newName = $file->getRandomName();
-                $file->move(ROOTPATH . 'public/uploads/profile_pics', $newName);
-                $data['user_image'] = $newName;
+            if ($file) {
+                // Only process the file if a valid file is uploaded
+                if ($file->isValid() && !$file->hasMoved()) {
+                    $newName = $file->getRandomName();
+                    $file->move(ROOTPATH . 'public/uploads/profile_pics', $newName);
+                    $data['user_image'] = $newName;
+                }
             }
 
             // Update the user's data
@@ -45,6 +56,9 @@ class User extends BaseController
             return view('User/edit', ['validation' => $this->validator]);
         }
     }
+
+
+
 
 
     // public function updateProfilePicture()
