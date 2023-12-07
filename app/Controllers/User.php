@@ -23,9 +23,9 @@ class User extends BaseController
             'user_image' => 'max_size[user_image,1024]|is_image[user_image]|mime_in[user_image,image/jpg,image/jpeg,image/png,image/svg+xml]',
         ];
 
-        // Check if a file is uploaded before applying validation rules
+        // Check if a file is upladed before applying validation rule
         if ($file = $this->request->getFile('user_image')) {
-            // Remove the 'required' rule for user_image if no file is uploaded
+            // Remove the required rule 
             if (!$file->isValid()) {
                 unset($rules['user_image']);
             }
@@ -47,7 +47,7 @@ class User extends BaseController
                 }
             }
 
-            // Update the user's data
+            // Update  user data
             $this->builder->update($data, ['id' => user()->id]);
 
             session()->setFlashdata('pesan', 'Profile berhasil diupdate!');
